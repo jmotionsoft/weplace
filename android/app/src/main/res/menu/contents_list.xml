@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_favorites"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_star_border"
+        android:title="@string/txt_favorites"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_refresh"
+        android:title="@string/txt_refresh"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_add"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_edit_24dp"
+        android:title="@string/txt_add"
+        app:showAsAction="always" />
+</menu>

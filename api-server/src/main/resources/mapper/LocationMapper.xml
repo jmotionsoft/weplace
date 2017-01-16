@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="towntalk.mapper.LocationDao">
+    <select id="getLocation" parameterType="location" resultType="location">
+
+    </select>
+
+    <select id="getLocationList" parameterType="location" resultType="location">
+
+    </select>
+
+    <select id="getUserCount" parameterType="location" resultType="int">
+
+    </select>
+
+    <insert id="addLocation" parameterType="location" useGeneratedKeys="true" keyColumn="location_no">
+
+    </insert>
+
+    <update id="editLocation" parameterType="location">
+
+    </update>
+
+    <delete id="removeLocation" parameterType="location">
+
+    </delete>
+</mapper>

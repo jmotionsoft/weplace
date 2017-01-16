@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="towntalk.mapper.ContentsDao">
+    <select id="getContentsList" parameterType="contents" resultType="contents">
+        select contents_no, board_no, title, body, images_no, read_count, notice_yn, state, user_no, reg_date,
+          nickname, comment_count
+        from (
+            select a.contents_no, a.board_no, a.title, a.body, a.images_no, a.read_count, a.notice_yn, a.state,
+              a.user_no, (UNIX_TIMESTAMP(a.reg_date) * 1000) as reg_date,
+              CAST(AES_DECRYPT(UNHEX(b.nickname), #{crypt_key}) as CHAR) as nickname,
+              (
+                select count(*)
+                from tb_comment c
+                where c.contents_no = a.contents_no
+              ) as comment_count,
+              AES_DECRYPT(UNHEX(a.latitude), #{crypt_key}) as latitude,
+              AES_DECRYPT(UNHEX(a.longitude), #{crypt_key}) as longitude,
+              AES_DECRYPT(UNHEX(d.latitude), #{crypt_key}) as user_latitude,
+              AES_DECRYPT(UNHEX(d.longitude), #{crypt_key}) as user_longitude,
+              d.latitude_range, d.longitude_range
+            from tb_contents a
+            join tu_member b
+              on a.user_no = b.user_no
+            join tu_location d
+              on a.user_no = d.user_no
+              and d.default_yn = 'Y'
+            where a.board_no = #{board_no}
+              <if test="last_index_no != null">and a.contents_no <![CDATA[<]]> #{last_index_no}</if>
+        ) as ta
+        where (latitude <![CDATA[>]]> (user_latitude - latitude_range)
+                  and latitude <![CDATA[<]]> (user_latitude + latitude_range))
+          and (longitude <![CDATA[>]]> (user_longitude - longitude_range)
+                  and longitude <![CDATA[<]]> (user_longitude + longitude_range))
+        order by reg_date desc
+        limit #{total_count}
+    </select>
+
+    <select id="getContents" parameterType="contents" resultType="contents">
+        select a.contents_no, a.board_no, a.title, a.body, a.images_no, a.read_count,
+           a.notice_yn, a.state, a.user_no, (UNIX_TIMESTAMP(a.reg_date) * 1000) as reg_date,
+           CAST(AES_DECRYPT(UNHEX(b.nickname), #{crypt_key}) as CHAR) as nickname,
+           ( select count(*)
+             from tb_comment c
+             where c.contents_no = a.contents_no ) as comment_count
+        from tb_contents a
+        join tu_member b
+          on a.user_no = b.user_no
+        where a.board_no = #{board_no}
+          and a.contents_no = #{contents_no}
+    </select>
+
+    <insert id="insertContents" parameterType="contents" useGeneratedKeys="true" keyProperty="contents_no">
+        insert into tb_contents
+          (board_no, title, body, images_no, read_count, latitude,
+            longitude, notice_yn, state, user_no, reg_date)
+        select #{board_no}, #{title}, #{body}, #{images_no}, 0, latitude,
+            longitude, #{notice_yn}, 'ACTIVE', #{user_no}, now()
+        from tu_location
+        where default_yn = 'Y'
+          and user_no = #{user_no}
+    </insert>
+
+    <update id="updateContents" parameterType="contents">
+        update tb_contents
+        <set>
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="body != null and body != ''">body = #{body},</if>
+            <if test="images_no != null">images_no = #{images_no},</if>
+            <if test="notice_yn != null and notice_yn != ''">notice_yn = #{notice_yn},</if>
+            <if test="state != null and state != ''">state = #{state}</if>
+        </set>
+        where contents_no = #{contents_no}
+          and board_no = #{board_no}
+          and user_no = #{user_no}
+    </update>
+
+    <update id="updateViewCount" parameterType="contents">
+        update tb_contents
+        set read_count = read_count + 1
+        where contents_no = #{contents_no}
+          and board_no = #{board_no}
+    </update>
+
+    <delete id="deleteContents" parameterType="contents">
+        delete from tb_contents
+        where contents_no = #{contents_no}
+          and board_no = #{board_no}
+          and user_no = #{user_no}
+    </delete>
+</mapper>

@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">We Place</string>
+
+    <string name="dialog_ok">확인</string>
+    <string name="dialog_cancel">취소</string>
+
+    <!-- a b c d e f g h i j k l m n o p q r s t u v w x y z -->
+    <string name="txt_add">추가</string>
+    <string name="txt_add_contents">글 쓰기</string>
+    <string name="txt_add_comment">댓글 쓰기</string>
+    <string name="txt_add_location">위치 추가</string>
+    <string name="txt_edit_my_info">회원 정보수정</string>
+    <string name="txt_edit_location">활동지역 변경</string>
+    <string name="txt_contents">내용</string>
+    <string name="txt_comment">댓글</string>
+    <string name="txt_change_password">비밀번호 변경</string>
+    <string name="txt_change_password_confirm">비밀번호 변경 확인</string>
+    <string name="txt_done">완료</string>
+    <string name="txt_delete">삭제</string>
+    <string name="txt_email">이메일</string>
+    <string name="txt_edit">수정</string>
+    <string name="txt_favorites">즐겨찾기</string>
+    <string name="txt_login">로그인</string>
+    <string name="txt_logout">로그아웃</string>
+    <string name="txt_join">회원가입</string>
+    <string name="txt_loss_password">비밀번호 분실</string>
+    <string name="txt_location_name">지역명</string>
+    <string name="txt_my_location">주요활동 지역</string>
+    <string name="txt_nickname">닉네임</string>
+    <string name="txt_password">비밀번호</string>
+    <string name="txt_password_confirm">비밀번호 확인</string>
+    <string name="txt_photo">사진</string>
+    <string name="txt_refresh">새로고침</string>
+    <string name="txt_select_location">활동지역 선택</string>
+    <string name="txt_select_picture">이미지 선택</string>
+    <string name="txt_setting">설정</string>
+    <string name="txt_temp_password">임시 비밀번호 발급</string>
+    <string name="txt_title">제목</string>
+    <string name="txt_withdraw">탈퇴</string>
+
+    <string name="msg_allow_permission">권한이 있어야 서비스를 이용 할 수 있습니다.</string>
+    <string name="msg_confirm_update">필수 업데이트 후 사용할 수 있습니다.\n업데이트 하시겠습니까?</string>
+    <string name="msg_confirm_delete_contents">게시글을 삭제하시겠습니까?</string>
+    <string name="msg_confirm_delete_location">지역을 삭제하시겠습니까?</string>
+    <string name="msg_check_email">이메일형식이 아닙니다.</string>
+    <string name="msg_check_password">비밀번호는 8자리이상 입력하세요.</string>
+    <string name="msg_false_login">로그인에 실패하였습니다.</string>
+    <string name="msg_false_get_location_list">위치 목록을 가져오지 못했습니다.</string>
+    <string name="msg_false_select_location">지역을 변경하지 못했습니다.</string>
+    <string name="msg_get_location">위치를 가져오는 중입니다.</string>
+    <string name="msg_get_fail_location">위치를 가져오는데 실패하였습니다.\n지도에서 직접 선택하여 주세요.</string>
+    <string name="msg_http_unauthorized">해당 요청에 대하여 권한이 없습니다.\n다시 로그인해 주세요.</string>
+    <string name="msg_http_not_found">해당 정보를 찾을 수 없습니다.</string>
+    <string name="msg_http_server_error">서버와 통신에 실패하였습니다.\n잠시 후 다시 시도해주세요.</string>
+    <string name="msg_http_error">서버와 통신에 실패하였습니다.\n잠시 후 다시 시도해주세요.</string>
+    <string name="msg_input_email">이메일을 입력해주세요.</string>
+    <string name="msg_input_nickname">닉네임을 입력해주세요.</string>
+    <string name="msg_input_password">비밀번호를 입력해 주세요.</string>
+    <string name="msg_input_password_confirm">비밀번호를 한번더 입력해 주세요.</string>
+    <string name="msg_input_location">주요 활동지역을 입력해 주세요.</string>
+    <string name="msg_input_location_select">지도에서 지역을 선택해 주세요.</string>
+    <string name="msg_input_location_name">지역명을 입력해 주세요.</string>
+    <string name="msg_input_title">제목을 입력해 주세요.</string>
+    <string name="msg_input_body">내용을 입력해 주세요.</string>
+    <string name="msg_input_comment">내용을 입력해 주세요.</string>
+    <string name="msg_join_ok">회원가입이 완료되었습니다.</string>
+    <string name="msg_login_not_found_member">사용자 정보가 일치하지 않습니다.</string>
+    <string name="msg_limit_select_image">이미지는 최대 5개까지 업로드할 수 있습니다.</string>
+    <string name="msg_location_must_one">위치는 최소 하나이상 있어야 합니다.</string>
+    <string name="msg_no_same_password">비밀번호가 일치하지 않습니다.</string>
+    <string name="msg_not_contents">컨텐츠가 없습니다.</string>
+    <string name="msg_network_error">네트워크가 원활 하지 않습니다.\n잠시 후 다시 시도해주세요.</string>
+    <string name="msg_same_email">입력하신 이메일이 사용중입니다.</string>
+    <string name="msg_same_nickname">입력하신 닉네임이 사용중입니다.</string>
+    <string name="msg_server_error">오류가 발생했습니다.</string>
+    <string name="msg_success_add">추가되었습니다.</string>
+    <string name="msg_success_edit">수정되었습니다.</string>
+    <string name="msg_success_edit_my_info">회원정보가 수정되었습니다. 다시 로그인 해주세요.</string>
+    <string name="msg_success_delete">삭제되었습니다.</string>
+    <string name="msg_temp_password_notice">계정과 일치한 이메일로 신규 비밀번호가 발급됩니다.\n임시비밀번호는 유효기간은 하루 입니다.</string>
+    <string name="msg_temp_success">이메일로 임시비밀번호가 발급되었습니다.</string>
+    <string name="msg_temp_already">이미 임시비밀번호가 발급되었습니다.</string>
+    <string name="msg_wait">잠시만 기다려 주세요.</string>
+
+    <string name="title_activity_location">지역설정</string>
+    <string name="title_activity_contents_list">ContentsListActivity</string>
+
+    <string name="copyright">ⓒ 2016 J-SHARK</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

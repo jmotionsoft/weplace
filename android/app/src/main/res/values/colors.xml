@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 74A2C3 -->
+    <color name="colorPrimaryDark">#30719f</color>
+    <color name="colorPrimary">#4e87af</color>
+    <color name="colorAccent">#00bfa5</color>
+
+    <color name="dialog_background">@color/colorPrimaryDark</color>
+    <color name="dialog_text">@color/textWhite</color>
+    <color name="dialog_button_text">@color/textWhite</color>
+
+    <color name="textDarkPrimary">#B3000000</color>
+    <color name="textDarkSecondary">#8A000000</color>
+    <color name="textDarkHint">#61000000</color>
+    <color name="textPrimary">#FFFFFFFF</color>
+    <color name="textSecondary">#B3FFFFFF</color>
+    <color name="textWhite">#FFFFFFFF</color>
+    <color name="textAccentWhite">@color/colorPrimaryDark</color>
+</resources>

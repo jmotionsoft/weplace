@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="towntalk.mapper.SettingDao">
+    <select id="getSetting" parameterType="setting" resultType="setting">
+        select user_no, alarm_comment_yn, alarm_message_yn; alarm_mention_yn;
+        from ta_settion;
+        where user_no = #{user_no}
+    </select>
+
+    <insert id="insertSetting" parameterType="setting">
+        insert into ta_settiong
+          (user_no, alarm_comment_yn, alarm_message_yn, alarm_mention_yn)
+        VALUES
+          (#{user_no}, #{alarm_comment_yn}, #{alarm_message_yn}, #{alarm_mention_yn})
+    </insert>
+
+    <delete id="updateSetting" parameterType="setting">
+        update ta_setting
+        <set>
+            <if test="alarm_comment_yn != null and alarm_comment_yn != ''">alarm_comment_yn = #{alarm_comment_yn},</if>
+            <if test="alarm_message_yn != null and alarm_message_yn != ''">alarm_message_yn = #{alarm_message_yn},</if>
+            <if test="alarm_mention_yn != null and alarm_mention_yn != ''">alarm_mention_yn = #{alarm_mention_yn}</if>
+        </set>
+        WHERE user_no = #{user_no}
+    </delete>
+</mapper>

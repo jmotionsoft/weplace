@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="towntalk.mapper.CommentDao">
+    <select id="getCommentList" parameterType="comment" resultType="comment">
+        select a.comment_no, a.contents_no, a.comment, a.state,
+          a.user_no, (UNIX_TIMESTAMP(a.reg_date) * 1000) as reg_date,
+          CAST(AES_DECRYPT(UNHEX(b.nickname), #{crypt_key}) as CHAR) as nickname
+        from tb_comment a
+          join tu_member b
+            on a.user_no = b.user_no
+        where a.contents_no = #{contents_no}
+          order by a.reg_date
+    </select>
+
+    <select id="getComment" parameterType="comment" resultType="comment">
+        select a.comment_no, a.contents_no, a.comment, a.state,
+        a.user_no, (UNIX_TIMESTAMP(a.reg_date) * 1000) as reg_date,
+        CAST(AES_DECRYPT(UNHEX(b.nickname), #{crypt_key}) as CHAR) as nickname
+        from tb_comment a
+        join tu_member b
+        on a.user_no = b.user_no
+        where a.contents_no = #{contents_no}
+          and a.comment_no = #{comment_no}
+    </select>
+
+    <insert id="insertComment" parameterType="comment" useGeneratedKeys="true" keyProperty="comment_no">
+        insert into tb_comment
+          (contents_no, comment, state, user_no, reg_date)
+        VALUES
+          (#{contents_no}, #{comment}, #{state}, #{user_no}, now())
+    </insert>
+
+    <update id="editComment" parameterType="comment">
+        UPDATE tb_comment
+        <set>
+            <if test="comment != null">comment = #{comment},</if>
+            <if test="state != null">state = #{state}</if>
+        </set>
+        where comment_no = #{comment_no}
+        and contents_no = #{contents_no}
+        and user_no = #{user_no}
+    </update>
+
+    <delete id="deleteComment" parameterType="comment">
+        delete from tb_comment
+        where comment_no = #{comment_no}
+          and contents_no = #{contents_no}
+          and user_no = #{user_no}
+    </delete>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="towntalk.mapper.BoardDao">
+    <select id="getGroupList" resultType="group">
+        select *
+        from tb_group
+        where state = 'ACTIVE'
+        order by order_no
+    </select>
+
+    <select id="getBoardList" resultType="board">
+        select b.*
+        from tb_group a
+          join tb_board b
+            on a.group_no = b.group_no
+            and b.state = 'ACTIVE'
+        where a.state = 'ACTIVE'
+        order by a.order_no
+    </select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="towntalk.mapper.CommonFilesDao">
+    <select id="getFile" parameterType="commonFile" resultType="commonFile">
+        SELECT *
+        FROM tc_files
+        WHERE file_no = #{file_no}
+    </select>
+
+    <insert id="addFile" parameterType="commonFile" useGeneratedKeys="true" keyProperty="file_no">
+        INSERT INTO tc_files
+          (file_name, file_type, file_length, save_type, save_path, user_no, reg_date)
+        VALUES
+          (#{file_name}, #{file_type}, #{file_length}, #{save_type}, #{save_path}, #{user_no}, now())
+    </insert>
+
+    <delete id="deleteFile" parameterType="commonFile">
+        DELETE FROM tc_files
+        WHERE file_no = #{file_no}
+          AND user_no = #{user_no}
+    </delete>
+</mapper>

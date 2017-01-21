@@ -1,5 +1,8 @@
 # weplace
 
+*지두선의 포트폴리오 프로젝트입니다.<br/>
+*모든소스는 직접 작성하였습니다.<br/><br/>
+
 위치기반 소셜네트워크 서비스입니다.</br>
 구글플레이에서 다운받을 수 있습니다.</br>
 https://play.google.com/store/apps/details?id=com.jmotionsoft.weplace

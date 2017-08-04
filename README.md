@@ -4,8 +4,6 @@
 **모든소스는 직접 작성하였습니다.**<br/><br/>
 
 위치기반 소셜네트워크 서비스입니다.</br>
-구글플레이에서 다운받을 수 있습니다.</br>
-https://play.google.com/store/apps/details?id=com.jmotionsoft.weplace
 	
 ###기능
 1. 위치를 지정하고 근처에서 작성된 컨텐츠만 보입니다.
